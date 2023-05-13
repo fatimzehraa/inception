@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  nginx:
+    image: "nginx"
+    container_name: "nginx"
+    build: ./nginx/
+    ports:
+      - "443:9000"
+    volumes:
+      - "/home/fael-bou/data"
+
+  #  wordpress:
+  #  mariaDB
+
+
+
+# volumes
+  #database
+  #wp files
+
+#network
