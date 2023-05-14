@@ -6,9 +6,9 @@ services:
     container_name: "nginx"
     build: ./nginx/
     ports:
-      - "443:9000"
-    volumes:
-      - "/home/fael-bou/data"
+      - "80:80"
+        #  volumes:
+        # - "/home/fael-bou/data"
 
   #  wordpress:
   #  mariaDB
