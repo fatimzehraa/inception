@@ -11,6 +11,11 @@ services:
         # - "/home/fael-bou/data"
 
   #  wordpress:
+  wordpress:
+    image: "wordpress:latest"
+    container_name: "wordpress"
+    
+    
   #  mariaDB
 
 

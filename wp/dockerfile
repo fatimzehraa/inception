@@ -1,0 +1,12 @@
+FROM debian:bullseye
+
+RUN apt-get -y update \
+	&& apt-get -y upgrade \
+	&& apt-get -y install wordpress \
+    && apt-get -y install php php-fpm php-curl php-cli php-zip php-mysql php-xml
+
+#fpm should connect to nginx by port 9000 (add them to same network)
+#copy wp and fpm config files
+COPY ./index.php /var/www/html/index.php
+
+CMD ["php-fpm"]
