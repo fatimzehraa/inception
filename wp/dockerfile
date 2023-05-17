@@ -7,6 +7,7 @@ RUN apt-get -y update \
 
 #fpm should connect to nginx by port 9000 (add them to same network)
 #copy wp and fpm config files
+COPY ./wp_config.php /etc/wordpress/wp_config.php
 COPY ./index.php /var/www/html/index.php
 
 CMD ["php-fpm"]
