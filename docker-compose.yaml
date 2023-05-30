@@ -1,27 +1,50 @@
 version: "3.3"
 
 services:
+  mariaDB:
+    image: "mariadb"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: databasename
+      MYSQL_USER: fael-bou
+      MYSQL_PASSWORD: 123456
+      MYSQL_HOSTNAME: fael-bou.42.fr
+    volumes:
+      - DB:/var/lib/mysql
+    networks:
+      - my_network
+  
+  wordpress:
+    container_name: "wordpress"
+    build: ./wp/
+    ports:
+      - "9000"
+    networks:
+      - my_network
+    volumes:
+      - wp:/var/www/html
+    env_file:
+      - .env
+
   nginx:
-    image: "nginx"
     container_name: "nginx"
     build: ./nginx/
     ports:
-      - "80:80"
-        #  volumes:
-        # - "/home/fael-bou/data"
+      - "443:9000"
+    networks: 
+      - my_network
+    volumes:
+      - wp:/var/www/html 
 
-  #  wordpress:
-  wordpress:
-    image: "wordpress:latest"
-    container_name: "wordpress"
-    
-    
-  #  mariaDB
+volumes:
+  DB:
+  wp:
+    driver_opts:
+      type: 'none'
+      o: bind
+      device: /home/fatimzehra/data/wp
 
 
-
-# volumes
-  #database
-  #wp files
-
-#network
+networks:
+  my_network:
+# fpm(protocol to generate port li ghaydwi fih nginx m3a wp)
