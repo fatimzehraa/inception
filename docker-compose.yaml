@@ -17,6 +17,8 @@ services:
   wordpress:
     container_name: "wordpress"
     build: ./wp/
+    depends_on: 
+      - mariaDB
     ports:
       - "9000"
     networks:
@@ -29,6 +31,8 @@ services:
   nginx:
     container_name: "nginx"
     build: ./nginx/
+    depends_on: 
+      - wordpress
     ports:
       - "443:9000"
     networks: 
@@ -38,7 +42,13 @@ services:
 
 volumes:
   DB:
+    driver: local
+    driver_opts:
+      type: bind
+      device: /home/fatimzehra/data/DB
+      o: bind
   wp:
+    driver: local
     driver_opts:
       type: 'none'
       o: bind

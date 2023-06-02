@@ -1,12 +1,18 @@
 FROM debian:bullseye
 
-RUN apt-get -y update \
-	&& apt-get -y upgrade \
-    && apt-get -y install php-fpm php-mysql php-mysqli
-
 COPY ./script.sh /
 
 RUN chmod +x script.sh
+
+RUN apt-get -y update \
+	&& apt-get -y upgrade
+
+RUN mkdir -p /var/www/html && \
+	chmod -R 755 /var/www/html
+
+COPY ./index.php /var/www/html
+
 #fpm should connect to nginx by port 9000 (add them to same network)
 #copy wp and fpm config files
+
 CMD ["./script.sh"]
