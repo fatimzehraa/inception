@@ -20,7 +20,7 @@ services:
     depends_on: 
       - mariaDB
     ports:
-      - "9000"
+      - "9000:9000"
     networks:
       - my_network
     volumes:
@@ -34,7 +34,7 @@ services:
     depends_on: 
       - wordpress
     ports:
-      - "443:9000"
+      - "443:443"
     networks: 
       - my_network
     volumes:
@@ -44,9 +44,9 @@ volumes:
   DB:
     driver: local
     driver_opts:
-      type: bind
-      device: /home/fatimzehra/data/DB
+      type: 'none'
       o: bind
+      device: /home/fatimzehra/data/DB
   wp:
     driver: local
     driver_opts:
