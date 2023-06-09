@@ -6,6 +6,9 @@ all:
 up:
 	docker-compose -f $(DOCKER_COMPOSE) up -d
 
+logs:
+	docker-compose -f $(DOCKER_COMPOSE) logs
+
 down:
 	docker-compose -f $(DOCKER_COMPOSE) down
 
