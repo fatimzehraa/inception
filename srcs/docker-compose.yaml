@@ -1,15 +1,14 @@
 version: "3.9"
 
 services:
-  mariaDB:
-    image: "mariadb"
-    restart: on-failure
-    environment:
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: databasename
-      MYSQL_USER: fael-bou
-      MYSQL_PASSWORD: 123456
-      MYSQL_HOSTNAME: fael-bou.42.fr
+  mariadb:
+    container_name: "mariadb"
+    build: ./requirements/mariadb/
+      #    restart: on-failure
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
     volumes:
       - DB:/var/lib/mysql
     networks:
@@ -20,7 +19,7 @@ services:
     build: ./requirements/wp/
     restart: on-failure
     depends_on: 
-      - mariaDB
+      - mariadb
     ports:
       - "9000:9000"
     networks:

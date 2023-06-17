@@ -1,0 +1,14 @@
+FROM debian:buster
+
+RUN apt-get update
+RUN apt-get install -y mariadb-server default-mysql-client vim
+
+WORKDIR /var/lib/mysql
+
+#COPY ./conf/50-server.cnf /etc/mysql/mysql.conf.d/50-server.cnf
+#COPY ./conf/50-server.cnf /etc/mysql/my.cnf
+
+COPY ./tools/script.sh .
+RUN chmod +x script.sh
+
+CMD ["./script.sh"]

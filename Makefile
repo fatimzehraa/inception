@@ -19,8 +19,8 @@ fclean:
 	docker-compose -f $(DOCKER_COMPOSE) down --volumes
 	docker container prune -f
 	docker volume prune -f
-	docker image prune -f
-	docker system prune -f
+	#docker image prune -f
+	#docker system prune -f
 	sudo rm -rf /home/$(USER)/data/*/* 
 	docker network prune -f
 
