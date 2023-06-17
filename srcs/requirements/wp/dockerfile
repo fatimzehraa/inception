@@ -15,6 +15,6 @@ RUN apt-get -y update \
 
 RUN apt-get install -y wget
 
-RUN apt-get install -y php-fpm php-mysql php-mbstring php-zip php-gd php-xml php-pear php-gettext php-cgi php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath 
+RUN apt-get install -y php-fpm php-mysql php-mbstring php-zip php-gd php-xml php-pear php-gettext php-cgi php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath mariadb-client
 
 ENTRYPOINT ["/script.sh"]
