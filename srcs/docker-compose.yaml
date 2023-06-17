@@ -10,7 +10,7 @@ services:
     env_file:
       - .env
     volumes:
-      - DB:/var/lib/mysql
+      - DB:/var/run/mysql
     networks:
       - my-network
   
