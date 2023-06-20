@@ -21,6 +21,8 @@ echo "grant all privileges on $MYSQL_DATABASE.* to '$MYSQL_USER'@'%' ;"
 mysql -u root -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' ;"
 echo "FLUSH PRIVILEGES ;"
 mysql -u root -e "FLUSH PRIVILEGES ;"
+echo "ALTER USER 'root'@'localhost' IDENTIFIED BY $MYSQL_ROOT_PASSWORD ;"
+mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD' ;"
 
 mysqladmin -u root -p$MYSQL_PASSWORD shutdown
 
