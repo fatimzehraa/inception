@@ -3,17 +3,19 @@ version: "3.9"
 services:
   mariadb:
     container_name: "mariadb"
+    image: "mariadb"
     build: ./requirements/mariadb/
     restart: on-failure
     env_file:
       - .env
     volumes:
-      - DB:/var/run/mysql
+      - DB:/var/lib/mysql
     networks:
       - my-network
   
   wordpress:
     container_name: "wordpress"
+    image: "wordpress"
     build: ./requirements/wp/
     restart: on-failure
     depends_on: 
@@ -27,6 +29,7 @@ services:
 
   nginx:
     container_name: "nginx"
+    image: "nginx"
     build: ./requirements/nginx/
     restart: on-failure
     depends_on: 
@@ -44,13 +47,13 @@ volumes:
     driver_opts:
       type: 'none'
       o: bind
-      device: /home/fatimzehra/data/DB
+      device: /home/fael-bou/data/DB
   wp:
     driver: local
     driver_opts:
       type: 'none'
       o: bind
-      device: /home/fatimzehra/data/wp
+      device: /home/fael-bou/data/wp
 
 
 networks:

@@ -17,4 +17,10 @@ RUN apt-get install -y wget
 
 RUN apt-get install -y php-fpm php-mysql php-mbstring php-zip php-gd php-xml php-pear php-gettext php-cgi php-fpm php-json php-pdo php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath mariadb-client
 
+
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /bin/wp
+
+
 ENTRYPOINT ["/script.sh"]
