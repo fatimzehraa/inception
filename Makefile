@@ -23,7 +23,7 @@ fclean:
 	docker volume prune -f
 	docker image prune -f
 	#docker system prune -f
-	rm -rf /home/fael-bou/data/*/* 
+	sudo rm -rf /home/fael-bou/data/*/* 
 	docker network prune -f
 
 re: fclean all
